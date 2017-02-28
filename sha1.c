@@ -169,10 +169,11 @@ Sha1Digest Sha1_get (const void* msg, uint64_t bytes)
 Sha1Digest Sha1Digest_fromStr (const char* src)
 {
     Sha1Digest d;
+	memset(&d, 0, sizeof(d));
     int i;
     
     assert(src); // also, src must be at least 40 bytes
-    for (i = 0; i < 20 && src[i]; i++)
+    for (i = 0; i < 20 && src[0]; i++)
     {
         // \todo just use atoi or something
         int c0 = tolower(*src++);
